@@ -1,4 +1,4 @@
-FLASK_APP=app:app.py
+FLASK_APP=app:app
 SECRET_KEY=nutricao2026ifrn
 DB_USERNAME=psi2025_maria_38
 DB_PASSWORD=maria$#moura

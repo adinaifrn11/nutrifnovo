@@ -11,6 +11,32 @@ from models import Usuario
 #Criando a aplicação
 app = Flask(__name__)
 
+
+#Lendo as variáveis do arquivo flaskenv
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+db_usuario = os.getenv('DB_USERNAME')
+db_senha = os.getenv('DB_PASSWORD')
+db_mydb = os.getenv('DB_DATABASE')
+db_host = os.getenv('DB_HOST')
+db_port = os.getenv('DB_PORT')
+
+#Criando a string de conexão
+conexao = f"mysql+pymysql://{db_usuario}:{db_senha}@{db_host}:{db_port}/{db_mydb}"
+
+
+#Ligando o flask ao banco
+app.config['SQLALCHEMY_DATABASE_URI'] = conexao
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+#Inicializando o banco
+db.init_app(app)
+#Inicializando o Login_Manager
+lm.init_app(app)
+
+
+#importando o migrate
+migrate = Migrate(app, db)
+
 #ROTAS
 
 #pagina inicial
@@ -23,19 +49,11 @@ def index():
 def login():
     return render_template('login.html')   
 
-# #cadastro
-# @app.route('/cadastro')
-# def cadastro():
-#     return render_template('cadastro.html') 
-
-@app.route('/cadastroaluno')
-def cadastroaluno():
-    return render_template('cadastroaluno.html') 
-
-@app.route('/cadastroservidor')
-def cadastroservidor():
-    return render_template('cadastroservidor.html') 
-
+#cadastro
+ @app.route('/cadastro')
+ def cadastro():
+     return render_template('cadastro.html') 
+ 
 @app.route('/perfilservidor')
 def perfilservidor():
     return render_template('perfilservidor.html') 
@@ -83,33 +101,6 @@ def contato():
 @app.route('/restricao')
 def restricao():   
     return render_template('restricao.html')  
-
-###    
-
-#Lendo as variáveis do arquivo flaskenv
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-
-db_usuario = os.getenv('DB_USERNAME')
-db_senha = os.getenv('DB_PASSWORD')
-db_mydb = os.getenv('DB_DATABASE')
-db_host = os.getenv('DB_HOST')
-db_port = os.getenv('DB_PORT')
-
-#Criando a string de conexão
-conexao = f"mysql+pymysql://{db_usuario}:{db_senha}@{db_host}:{db_port}/{db_mydb}"
-
-#Ligando o flask ao banco
-app.config['SQLALCHEMY_DATABASE_URI'] = conexao
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-#Inicializando o banco
-db.init_app(app)
-#Inicializando o Login_Manager
-lm.init_app(app)
-
-
-#importando o migrate
-migrate = Migrate(app, db)
 
 #Rotas do CRUD
 
