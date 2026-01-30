@@ -1,5 +1,5 @@
 #Configurando o banco
-from flask import Flask, render_template, flash, redirect
+from flask import Flask, render_template, flash, redirect, url_for
 from models import Usuario
 #Inicializando o login_manager
 from utils import db,lm
@@ -7,6 +7,8 @@ import os
 #importando o migrate
 from flask_migrate import Migrate
 from models import Usuario
+from flask_login import logout_user, login_required
+
 
 
 #Criando a aplicação
@@ -53,6 +55,12 @@ def login():
 @lm.user_loader
 def load_user(user_id):
     return Usuario.query.get(int(user_id))
+
+@app.route('/logoff')
+@login_required
+def logoff():
+    logout_user()
+    return redirect(url_for('index'))  # ou qualquer rota de destino
 
 #cadastro
 @app.route('/cadastro')
