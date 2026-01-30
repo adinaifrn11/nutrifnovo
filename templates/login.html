@@ -1,6 +1,46 @@
-#Criando formulário de login
-<form action="{{ url_for('usuarios.autenticar') }}" method="post">
-    <input type="email" name="email" placeholder="Email">
-    <input type="password" name="senha" placeholder="Senha">
-    <button type="submit">Entrar</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{url_for('static', filename='css/login.css')}}" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <img src="{{url_for('static', filename='imgs/logo.jpg')}}"/>
+    </header>
+
+
+    <main>
+            <div class="login">
+                <h1>Login</h1>
+                <form action="" method="post">
+                    <label for="Matricula">Matricula do SUAP:</label>
+                    <input type="text" id="Matricula:" name="Matricula">
+
+
+                    <label for="Senha">Senha do SUAP:</label>
+                    <input type="text" id="Senha" name="Senha">
+                </form>  
+           
+                <button>Enviar</button>
+               
+            </div>
+            <img src="{{ url_for('static', filename='imgs/salada.png') }}"/>
+    </main>
+   
+    <footer>
+        <div>
+            <p>Inicio</p>
+            <p> Sobre nós </p>
+            <p>Ajuda</p>
+            <p>© 2025 Nutrif.</p>
+            <img src="{{ url_for('static', filename='imgs/logo.jpg') }}"/>
+        </div>
+    </footer>
+
+
+</body>
+</html>
+
