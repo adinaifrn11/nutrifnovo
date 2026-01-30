@@ -1,0 +1,33 @@
+{%extends "base.html"%}
+
+{% block extra_css %}
+    <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+{% endblock %}
+
+{%block conteudo%}
+
+    <main>
+        <h1>Restrição Alimentar</h1>
+
+        <form action="" method="POST" enctype="multipart/form-data">
+
+            <label for="restricao">Selecione seu tipo de restrição:</label>
+            <br>
+            <textarea id="restricao" name="restricao" placeholder="Descreva aqui..."></textarea>
+
+            <br><br>
+
+            <label for="arquivo"> Anexe seu laudo de restrição:</label>
+            <br>
+            <input type="file" id="arquivo" name="arquivo">
+
+            <br><br>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </main>
+
+{%endblock%}
+
+
+ 

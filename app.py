@@ -8,6 +8,7 @@ import os
 from flask_migrate import Migrate
 from models import Usuario
 
+
 #Criando a aplicação
 app = Flask(__name__)
 
@@ -48,6 +49,10 @@ def index():
 @app.route('/login')
 def login():
     return render_template('login.html')   
+
+@lm.user_loader
+def load_user(user_id):
+    return Usuario.query.get(int(user_id))
 
 #cadastro
 @app.route('/cadastro')
