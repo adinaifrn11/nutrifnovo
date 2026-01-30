@@ -96,7 +96,7 @@ db_host = os.getenv('DB_HOST')
 db_port = os.getenv('DB_PORT')
 
 #Criando a string de conexão
-conexao = "sqlite:///nutrif.db"
+conexao = f"mysql+pymysql://{db_usuario}:{db_senha}@{db_host}:{db_port}/{db_mydb}"
 
 #Ligando o flask ao banco
 app.config['SQLALCHEMY_DATABASE_URI'] = conexao
