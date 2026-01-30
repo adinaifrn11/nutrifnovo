@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename= 'css/style.css')}}">
+    <title></title>
+</head>
+<body>
+
+    <header>
+       <nav class="nav-header">
+            <img src="{{url_for('static', filename='imgs/logo.jpg')}}"/>
+            <a>HOME</a>
+            <a href="{{'feedback_form'}}">FEEDBACK</a> 
+            <a>CARDAPIO</a>
+            <a>RECEITAS</a>
+            <a>CONTATOS</a>
+            <img src="{{url_for('static', filename='imgs/PESSOA.png')}}"/>
+        </nav>
+        <hr>
+        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+	<li class="nav-item active">
+			<a class="nav-link" href="{{url_for('usuarios.logoff')}}">Sair</a>
+	</li>
+...
+</ul>
+    </header>
+
+    <!-- AQUI fica a área que muda -->
+    {% block conteudo %}
+    {% endblock %}
+
+    <footer>
+        <div>
+            <div>
+                <p>Inicio</p>
+                <p> Sobre nós </p>
+                <p>Ajuda</p>
+            </div>
+            <hr>
+            <p>© 2025 Nutrif.</p>
+        </div>
+       
+        <img src="{{ url_for('static', filename='imgs/logo.jpg') }}"/>
+    </footer>
+
+</body>
+</html>

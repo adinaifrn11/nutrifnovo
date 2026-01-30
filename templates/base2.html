@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{url_for('static', filename='css/base2.css')}}" rel="stylesheet">
+    <title>base2</title>
+</head>
+<body>
+    <!-- essa base será utilizada em: cadastro_servidor, cadastro_aluno e login -->
+     
+    <header>
+        <img src="{{url_for('static', filename='imgs/logo.jpg')}}"/>
+    </header>
+
+    {% block conteudo %}
+    {% endblock %}
+
+    <footer>
+        <div>
+            <p>Inicio</p>
+            <p> Sobre nós </p>
+            <p>Ajuda</p>
+            <p>© 2025 Nutrif.</p>
+            <img src="{{ url_for('static', filename='imgs/logo.jpg') }}"/>
+        </div>
+    </footer>
+</body>
+</html>

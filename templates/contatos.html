@@ -1,0 +1,30 @@
+{%extends "base.html"%}
+
+{%block conteudo%}
+    <main>
+
+        <h1>CONTATOS</h1>
+
+        <div class="card-contato">
+            <img src="{{ url_for('static', filename='imgs/nutricionista.png') }}">
+
+            <div class="card-info">
+                <h2>Ana Paula Souza</h2>
+                <p>E-mail: aaaaaaaa@escolar.ifrn.edu.br</p>
+                <p>Celular: (84) 99878-5634</p>
+            </div>
+        </div>
+
+        <div class="card-contato">
+            <img src="{{ url_for('static', filename='imgs/nutricionista.png') }}">
+
+            <div class="card-info">
+                <h2>Ana Paula Souza</h2>
+                <p>E-mail: aaaaaaaa@escolar.ifrn.edu.br</p>
+                <p>Celular: (84) 99878-5634</p>
+            </div>
+        </div>
+
+    </main>
+
+{%endblock%}

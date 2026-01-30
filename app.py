@@ -50,8 +50,8 @@ def login():
     return render_template('login.html')   
 
 #cadastro
- @app.route('/cadastro')
- def cadastro():
+@app.route('/cadastro')
+def cadastro():
      return render_template('cadastro.html') 
  
 @app.route('/perfilservidor')
