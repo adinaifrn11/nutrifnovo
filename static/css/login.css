@@ -18,17 +18,6 @@ header{
 header img{
     border-radius:10px
 }
-footer{
-    background:green;
-}
-
-
-main{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-}
-
 
 .login{
     background-color: #A9D8AF;
@@ -66,4 +55,48 @@ main{
     padding:20px;
     border-radius:15px;
     margin-top:40px;
+}
+main{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+footer {
+    background: #2f6b45;
+    padding: 15px 40px;
+    color: white;
+
+    display: flex;
+    align-items: center;
+}
+
+/* bloco central */
+.footer-texto {
+    flex: 1;
+    text-align: center;
+}
+
+/* links */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* texto */
+footer p {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* logo direita */
+footer img {
+    width: 55px;
+    border-radius: 15%;
 }

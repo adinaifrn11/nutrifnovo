@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>página inicial</title>
-    <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/index.css')}}" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav class="nav-header">
             <img src="{{url_for('static', filename='imgs/logo.jpg')}}">
             <div class="botoes-header">
-                <div><a>login</a></div>
-                <div><a>cadastre-se</a></div>
+                <div class="botoes-header">
+             <a href="{{ url_for('login') }}">Login</a>
+             <a href="{{ url_for('cadastro') }}">Cadastre-se</a>
+             </div>
             </div>
         </nav>
     </header>
@@ -21,9 +23,9 @@
         <section class="sessao-descricao">
             <div class="descricao-projeto">
                 <div><p>Nutrif é um projeto pensado para você estudante da rede federal, nosso projeto busca a melhoria da sua alimentação no campus, também ajudando os servidores na organização para instituição, tornando  nosso Campus um lugar melhor!</p></div>
-                <div class="botoes">
-                    <div><a>receitas</a></div>
-                    <div><a>cardapio</a></div>
+               <div class="botoes">
+                 <a href="{{ url_for('receitas') }}">Receitas</a>
+                <a href="{{ url_for('cardapio') }}">Cardápio</a>
                 </div>
             </div>
 
@@ -39,19 +41,20 @@
         </section>
     </main>
 
-    <footer>
-        <div class="conteudo-central-rodape">
-            <div>
-                <a>Inicio</a>
-                <a>Sobre nós</a>
-                <a>Ajuda</a>
-            </div>
-            <hr>
-            <p>© 2025 Nutrif.</p>
+   <footer>
+    <div class="footer-texto">
+        <div class="footer-links">
+            <a href="#">Início</a>
+            <a href="#">Sobre nós</a>
+            <a href="#">Ajuda</a>
         </div>
-        
-        <img src="{{url_for('static', filename='imgs/logo.jpg')}}">
-    </footer>
+
+        <p>© 2025 Nutrif.</p>
+    </div>
+
+    <img src="{{ url_for('static', filename='imgs/logo.jpg') }}">
+</footer>
+
 
 </body>
 </html>

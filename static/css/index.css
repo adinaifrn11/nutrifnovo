@@ -1,0 +1,173 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: #2f6b45;
+    padding: 15px 40px;
+}
+
+.nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-header img {
+    width: 60px;
+    border-radius: 20%;
+}
+
+/* Botões Login / Cadastre-se */
+.botoes-header {
+    display: flex;
+    gap: 15px;
+}
+
+.botoes-header a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: 2px solid white;
+    transition: 0.3s;
+}
+
+/* Login branco */
+.botoes-header a:first-child {
+    background: white;
+    color: #2f6b45;
+}
+
+/* Cadastre-se verde */
+.botoes-header a:last-child {
+    background: #2f6b45;
+    color: white;
+}
+
+.botoes-header a:hover {
+    opacity: 0.8;
+}
+
+/* ===== MAIN ===== */
+main {
+    padding: 50px;
+}
+
+/* Sessão principal */
+.sessao-descricao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Caixa de texto */
+.descricao-projeto {
+    background: #b9dcbf;
+    padding: 40px;
+    border-radius: 30px;
+    max-width: 380px;
+}
+
+.descricao-projeto p {
+    font-size: 20px;
+    line-height: 1.6;
+    color: #1f3b28;
+}
+
+/* Botões Receitas / Cardápio */
+.botoes {
+    margin-top: 25px;
+    display: flex;
+    gap: 15px;
+}
+
+.botoes a {
+    text-decoration: none;
+    background: #2f6b45;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.botoes a:hover {
+    background: #245237;
+}
+
+/* Imagem grande */
+.sessao-descricao img {
+    width: 450px;
+    border-radius: 25px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.25);
+}
+
+/* ===== GALERIA ===== */
+.imagens-projeto {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.imagens-projeto img {
+    width: 500px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
+}
+
+
+footer {
+    background: #2f6b45;
+    padding: 15px 40px;
+    color: white;
+
+    display: flex;
+    align-items: center;
+}
+
+/* centro do footer */
+.footer-texto {
+    flex: 1;
+    text-align: center;
+}
+
+/* links */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+/* texto */
+footer p {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* logo direita */
+footer img {
+    width: 55px;
+    border-radius: 15%;
+}
