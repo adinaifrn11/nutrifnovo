@@ -1,0 +1,94 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Fundo geral */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffffff 70%, #c8efd6 100%);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Área principal */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card central */
+main form {
+    background-color: #ffffff;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 30px 40px;
+    width: 420px;
+    max-width: 90%;
+}
+
+/* Título */
+main h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #000;
+}
+
+/* Labels */
+label {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Textarea */
+textarea {
+    width: 100%;
+    height: 90px;
+    margin-top: 8px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+    resize: none;
+    font-size: 14px;
+}
+
+/* Input file */
+input[type="file"] {
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/* Botão */
+button {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 10px 28px;
+    background-color: #2f6f4e;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #245a3f;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    main form {
+        padding: 25px 20px;
+    }
+
+    main h1 {
+        font-size: 20px;
+    }
+}

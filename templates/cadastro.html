@@ -4,61 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cadastro</title>
+    <link href="{{url_for('static', filename='css/cadastro.css')}}" rel="stylesheet">
+
 </head>
 <body>
+   
+   <header>
+        <img src="{{url_for('static', filename='imgs/logo.jpg')}}"/>
+    </header>
 
-    <header>
-        <nav class="nav-header">
-            <img src="{{ url_for('static', filename='imgs/logo.jpg') }}"/>
-        </nav>
-    </header>    
-<hr>
+
     <main>
-        <h1>Cadastro</h1>
-        <form action="" method="post">
-            <label>sou aluno</label>
-            <input type="checkbox" name="opç1" value="sim"> 
-            <label>sou servidor</label>
-            <input type="checkbox" name="opç2" value="sim"> 
-               
-            <button type="submit">Enviar</button>
-
-        </main>
-
-    
-    {%extends "base2.html"%}
-
-    {%block conteudo%}  
-
-        <main>
-            <div>
-                <h1>Cadastro</h1>
+            <div class="cadastro">
+                <h1>cadastro</h1>
                 <form action="" method="post">
-                    <label>Sou aluno</label>
-                    <input type="checkbox" name="opç1" value="sim"> 
-                    <label>Sou servidor</label>
-                    <input type="checkbox" name="opç2" value="sim"> 
-                    <button>Enviar</button>
-                </form>
+                    <label for="Email">Email</label>
+                    <input type="text" id="Email:" name="Email">
+
+
+                    <label for="Senha">Senha :</label>
+                    <input type="text" id="Senha" name="Senha">
+                </form>  
+           
+                <button>Enviar</button>
+               
             </div>
-
-        </main>
-
-        <img src="{{ url_for('static', filename='imgs/salada.png') }}"/>
-
-
-    <footer>
-        <div>
-            <p>Inicio</p>
-            <p> Sobre nós </p>
-            <p>Ajuda</p>
-            <p>© 2025 Nutrif</p>
-             <img src="{{ url_for('static', filename='imgs/logo.jpg') }}"/>
+            
+    </main>
+        <footer>
+    <div class="footer-texto">
+        <div class="footer-links">
+            <a href="#">Início</a>
+            <a href="#">Sobre nós</a>
+            <a href="#">Ajuda</a>
         </div>
-    </footer>
 
+        <p>© 2025 Nutrif.</p>
+    </div>
 
-    {%endblock%}
+            <img src="{{ url_for('static', filename='imgs/logo.jpg') }}">
+   </footer>
+
 </body>
 </html>        
 
