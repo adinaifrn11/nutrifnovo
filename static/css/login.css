@@ -60,7 +60,15 @@ main{
     display:flex;
     align-items: center;
     justify-content: center;
+
+ 
 }
+.salada {
+    position: fixed;
+    bottom: 100px;
+    right: 10px;
+}
+
 footer {
     background: #2f6b45;
     padding: 15px 40px;
@@ -100,3 +108,4 @@ footer img {
     width: 55px;
     border-radius: 15%;
 }
+

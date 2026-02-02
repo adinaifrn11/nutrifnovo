@@ -8,6 +8,7 @@ import os
 from flask_migrate import Migrate
 from models import Usuario
 from flask_login import logout_user, login_required
+from flask_login import login_user
 
 
 #Criando a aplicação
@@ -47,10 +48,25 @@ def index():
     return render_template('index.html')
 
 #login
-@app.route('/login')
-def login():
-    return render_template('login.html')   
 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+
+    if request.method == "POST":
+
+        email = request.form["email"]
+        senha = request.form["senha"]
+
+        # procurar usuário no banco
+        usuario = Usuario.query.filter_by(email=email).first()
+
+        if usuario and usuario.senha == senha:
+            login_user(usuario)
+            return redirect(url_for("index"))
+
+        flash("Email ou senha incorretos!")
+
+    return render_template("login.html")
 @lm.user_loader
 def load_user(user_id):
     return Usuario.query.get(int(user_id))
@@ -62,10 +78,30 @@ def logoff():
     return redirect(url_for('index'))  # ou qualquer rota de destino
 
 #cadastro
-@app.route('/cadastro')
+@app.route("/cadastro", methods=["GET", "POST"])
 def cadastro():
-     return render_template('cadastro.html') 
- 
+
+    if request.method == "POST":
+        print("CHEGOU NO POST!")  # 👈 teste
+
+        nome = request.form["nome"]
+        email = request.form["email"]
+        senha = request.form["senha"]
+
+        print("Recebido:", nome, email, senha)
+
+        novo_usuario = Usuario(nome, email, senha)
+
+        db.session.add(novo_usuario)
+        db.session.commit()
+
+        print("SALVO NO BANCO!")  # 👈 teste
+
+        return redirect(url_for("login"))
+
+    return render_template("cadastro.html")
+
+
 @app.route('/perfilservidor')
 def perfilservidor():
     return render_template('perfilservidor.html') 

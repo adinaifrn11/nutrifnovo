@@ -3,35 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cadastro</title>
-    <link href="{{url_for('static', filename='css/cadastro.css')}}" rel="stylesheet">
-
+    <title>Cadastro</title>
+    <link href="{{ url_for('static', filename='css/cadastro.css') }}" rel="stylesheet">
 </head>
+
 <body>
-   
-   <header>
-        <img src="{{url_for('static', filename='imgs/logo.jpg')}}"/>
-    </header>
 
+<header>
+    <img src="{{ url_for('static', filename='imgs/logo.jpg') }}"/>
+</header>
 
-    <main>
-            <div class="cadastro">
-                <h1>cadastro</h1>
-                <form action="" method="post">
-                    <label for="Email">Email</label>
-                    <input type="text" id="Email:" name="Email">
+<main>
+    <div class="cadastro">
+        <h1>Cadastro</h1>
 
+        <form method="POST" action="{{ url_for('cadastro') }}">
 
-                    <label for="Senha">Senha :</label>
-                    <input type="text" id="Senha" name="Senha">
-                </form>  
-           
-                <button>Enviar</button>
-               
-            </div>
-            
-    </main>
-        <footer>
+    <label>Nome</label>
+    <input type="text" name="nome" required>
+
+    <br><br>
+
+    <label>Email</label>
+    <input type="email" name="email" required>
+
+    <br><br>
+
+    <label>Senha</label>
+    <input type="password" name="senha" required>
+
+    <br><br>
+
+    <button type="submit">Cadastrar</button>
+
+</form>
+
+    </div>
+</main>
+
+<footer>
     <div class="footer-texto">
         <div class="footer-links">
             <a href="#">Início</a>
@@ -42,10 +52,8 @@
         <p>© 2025 Nutrif.</p>
     </div>
 
-            <img src="{{ url_for('static', filename='imgs/logo.jpg') }}">
-   </footer>
+    <img src="{{ url_for('static', filename='imgs/logo.jpg') }}">
+</footer>
 
 </body>
-</html>        
-
-
+</html>
