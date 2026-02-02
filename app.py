@@ -1,5 +1,5 @@
 #Configurando o banco
-from flask import Flask, render_template, flash, redirect, url_for
+from flask import Flask, render_template, request, flash, redirect, url_for
 from models import Usuario
 #Inicializando o login_manager
 from utils import db,lm
@@ -8,7 +8,6 @@ import os
 from flask_migrate import Migrate
 from models import Usuario
 from flask_login import logout_user, login_required
-
 
 
 #Criando a aplicação
@@ -21,7 +20,7 @@ db_usuario = os.getenv('DB_USERNAME')
 db_senha = os.getenv('DB_PASSWORD')
 db_mydb = os.getenv('DB_DATABASE')
 db_host = os.getenv('DB_HOST')
-db_port = os.getenv('DB_PORT')
+db_port = os.getenv('DB_PORT') or 3308
 
 #Criando a string de conexão
 conexao = f"mysql+pymysql://{db_usuario}:{db_senha}@{db_host}:{db_port}/{db_mydb}"
