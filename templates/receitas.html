@@ -1,43 +1,100 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receitas</title>
 
-{% block conteudo %}
-<main class="receitas-container">
+    <link href="{{ url_for('static', filename='css/receitas.css') }}" rel="stylesheet">
+</head>
+<body>
 
-    <h1>RECEITAS</h1>
-
-    <div class="receita-box">
-        <div class="receita-info">
-            <h3>Feijão preto</h3>
-            <p>descrição descrição descrição</p>
+    <!-- HEADER -->
+    <header class="topo">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='imgs/logo.jpg') }}" alt="Logo Nutrif">
         </div>
-        <div class="receita-img">imagem</div>
-    </div>
 
-    <div class="receita-box">
-        <div class="receita-info">
-            <h3>Feijão preto</h3>
-            <p>descrição descrição descrição</p>
+        <nav class="menu">
+            <a href="{{ url_for('index') }}">HOME</a>
+            <a href="{{ url_for('feedback_form') }}">FEEDBACK</a>
+            <a href="{{ url_for('cardapio') }}">CARDÁPIO</a>
+            <a href="{{ url_for('receitas') }}">RECEITAS</a>
+            <a href="{{ url_for('contato') }}">CONTATOS</a>
+        </nav>
+
+        <div class="perfil">
+            <img src="{{ url_for('static', filename='imgs/PESSOA.png') }}" alt="Perfil">
         </div>
-        <div class="receita-img">imagem</div>
-    </div>
+    </header>
 
-    <div class="receita-box">
-        <div class="receita-info">
-            <h3>Feijão preto</h3>
-            <p>descrição descrição descrição</p>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="receitas-container">
+
+        <h1>RECEITAS</h1>
+
+        <!-- Receita 1 -->
+        <div class="receita-box">
+            <div class="receita-info">
+                <h3>Feijão preto</h3>
+                <p>Delicioso prato gastronômico composto de legumes.</p>
+            </div>
+
+            <div class="receita-img">
+                <img src="{{ url_for('static', filename='imgs/feijao.jpg') }}" alt="Receita">
+            </div>
         </div>
-        <div class="receita-img">imagem</div>
-    </div>
 
-    <div class="receita-box">
-        <div class="receita-info">
-            <h3>Feijão preto</h3>
-            <p>descrição descrição descrição</p>
+        <!-- Receita 2 -->
+        <div class="receita-box">
+            <div class="receita-info">
+                <h3>Feijão preto</h3>
+                <p>Descrição descrição descrição.</p>
+            </div>
+
+            <div class="receita-img">
+                <img src="{{ url_for('static', filename='imgs/feijao.jpg') }}" alt="Receita">
+            </div>
         </div>
-        <div class="receita-img">imagem</div>
-    </div>
 
-</main>
-<hr>
-{% endblock %}
+        <!-- Receita 3 -->
+        <div class="receita-box">
+            <div class="receita-info">
+                <h3>Feijão preto</h3>
+                <p>Descrição descrição descrição.</p>
+            </div>
 
+            <div class="receita-img">
+                <img src="{{ url_for('static', filename='imgs/feijao.jpg') }}" alt="Receita">
+            </div>
+        </div>
+
+        <!-- Receita 4 -->
+        <div class="receita-box">
+            <div class="receita-info">
+                <h3>Feijão preto</h3>
+                <p>Descrição descrição descrição.</p>
+            </div>
+
+            <div class="receita-img">
+                <img src="{{ url_for('static', filename='imgs/feijao.jpg') }}" alt="Receita">
+            </div>
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="rodape">
+        <div class="footer-links">
+            <a href="{{ url_for('index') }}">Início</a>
+            <a href="#">Sobre nós</a>
+            <a href="#">Ajuda</a>
+        </div>
+
+        <p>© 2025 Nutrif.</p>
+    </footer>
+
+</body>
+</html>

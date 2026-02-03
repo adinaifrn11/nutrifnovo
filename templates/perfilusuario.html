@@ -1,28 +1,78 @@
-{%extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Perfil do Usuário</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/perfilusuario.css') }}">
+</head>
 
-{%block conteudo%}
+<body>
+   <main class="container">
 
-<main>
+      <h1 class="titulo">PERFIL DE USUÁRIO</h1>
 
-    <h2>Perfil do usuario</h2>
-    <img src="{{url_for('static', filename='imgs/PESSOA.png')}}"/>
-    <p>Maria pereira</p>
-    <p>matricula: 20231041110029</p>
-    <p>cadastrado em auxilio? SIM</p>
-    <H2>restrições</H2>
-       <img src="{{url_for('static', filename='imgs/atenção.png')}}"/>
-    <p>você não possui restrições</p>
+      <!-- CARD PERFIL -->
+      <section class="card perfil">
+         <img class="avatar" src="{{url_for('static', filename='imgs/PESSOA.png')}}" alt="Usuário">
 
-    <H2>Feedbacks</H2>
-       <img src="{{url_for('static', filename='imgs/atenção.png')}}"/>
-    <p>você não possui feedbacks</p>
+         <div class="info">
+            <p class="nome">MARIA FERNANDES SILVA</p>
+            <p>matrícula: 20231041110029</p>
+            <p>cadastrado em auxílio? <strong>SIM</strong></p>
+         </div>
+      </section>
 
+      <!-- CARD RESTRIÇÕES -->
+      <section class="card">
+         <div class="card-header">
+            <h2>RESTRIÇÕES</h2>
+        <a href="{{ url_for('restricao') }}" class="btn verde">
+            REGISTRAR RESTRIÇÃO
+         </a>
+         </div>
+         <p class="texto">intolerância à lactose</p>
+      </section>
 
+      <!-- CARD FEEDBACKS -->
+      <section class="card">
+         <h2>FEEDBACKS</h2>
 
-</main>
+         <div class="feedback">
+            <span class="estrelas">★★★☆☆</span>
+            <p>meu feijão veio com caracol</p>
+            <button class="btn vermelho pequeno">Excluir feedback</button>
+         </div>
 
-{%endblock%}
- 
- 
- 
- 
+         <div class="feedback">
+            <span class="estrelas">★★★☆☆</span>
+            <p>meu feijão veio com caracol</p>
+            <button class="btn vermelho pequeno">Excluir feedback</button>
+         </div>
+      </section>
+
+      <!-- BOTÕES -->
+      
+         <div class="acoes">
+   <button class="btn verde" onclick="history.back()">VOLTAR</button>
+   <a href="{{ url_for('logoff') }}" class="btn amarelo">SAIR</a>
+</div>
+      
+
+      <form action="{{ url_for('excluir_conta') }}" method="post">
+       <button class="btn vermelho">
+      EXCLUIR CONTA
+       </button>
+</form>
+
+   </main>
+
+   <footer>
+      <a href="#">Início</a>
+      <a href="#">Sobre nós</a>
+      <a href="#">Ajuda</a>
+      <p>© 2025 Nutri</p>
+   </footer>
+
+</body>
+</html>

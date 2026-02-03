@@ -9,6 +9,7 @@ from flask_migrate import Migrate
 from models import Usuario
 from flask_login import logout_user, login_required
 from flask_login import login_user
+from flask_login import current_user
 
 
 #Criando a aplicação
@@ -178,19 +179,26 @@ def update():
     db.session.commit()
     return 'Dados atualizados com sucesso'
 
-#Rota Delete
-@app.route("/delete")
-def delete():		
-    u = Usuario.query.get(1)
-    db.session.delete(u)
+#rota delete funcional com o banco
+@app.route("/excluir_conta", methods=["POST"])
+@login_required
+def excluir_conta():
+    db.session.delete(current_user)
     db.session.commit()
-    return 'Dados excluídos com sucesso'
+
+    logout_user()
+    flash("Conta excluída com sucesso.")
+    return redirect(url_for("index"))
 
 #Página 'para acesso negado'
 @app.errorhandler(401)
 def acesso_negado(e):
     return render_template('acesso_negado.html'), 401
 
+#voltar pagina 
+@app.route("/voltar")
+def voltar():
+    return redirect(request.referrer or url_for("index"))
 
 if __name__ == "__main__":    
     app.run()    

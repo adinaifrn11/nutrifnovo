@@ -1,0 +1,120 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   background: #ffffff;
+}
+
+/* CONTAINER */
+.container {
+   flex: 1;
+   display: flex;
+   justify-content: allows;
+   align-items: center;
+   padding: 40px 20px;
+   gap: 40px;
+}
+
+/* CARD */
+.card {
+   background: #b6e3b6;
+   padding: 30px;
+   border-radius: 20px;
+   width: 100%;
+   max-width: 450px;
+}
+
+/* TÍTULO */
+.card h1 {
+   text-align: center;
+   margin-bottom: 20px;
+}
+
+/* FORM */
+form {
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+}
+
+label {
+   font-size: 14px;
+   font-weight: bold;
+}
+
+/* ESTRELAS */
+.estrelas {
+   font-size: 22px;
+   margin-bottom: 10px;
+}
+
+/* INPUTS */
+input[type="date"],
+select,
+textarea {
+   padding: 8px;
+   border-radius: 10px;
+   border: none;
+   outline: none;
+}
+
+textarea {
+   resize: none;
+   height: 100px;
+}
+
+/* BOTÃO */
+button {
+   margin-top: 15px;
+   align-self: center;
+   padding: 10px 30px;
+   border-radius: 20px;
+   border: none;
+   background: #2f5f4f;
+   color: white;
+   font-weight: bold;
+   cursor: pointer;
+}
+
+/* IMAGEM */
+.decoracao {
+   width: 180px;
+}
+
+/* FOOTER */
+footer {
+   background: #2f5f4f;
+   color: white;
+   text-align: center;
+   padding: 20px;
+}
+
+footer a {
+   color: white;
+   margin: 0 10px;
+   text-decoration: none;
+   font-size: 14px;
+}
+
+footer p {
+   margin-top: 10px;
+   font-size: 13px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+   .container {
+      flex-direction: column;
+   }
+
+   .decoracao {
+      width: 140px;
+   }
+}

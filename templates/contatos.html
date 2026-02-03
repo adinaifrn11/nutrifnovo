@@ -1,7 +1,35 @@
-{%extends "base.html"%}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatos</title>
 
-{%block conteudo%}
-    <main>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contatos.css') }}">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="topo">
+        <div class="logo">
+    <img src="{{url_for('static', filename='imgs/logo.jpg')}}"/>  </div>
+
+        <nav>
+            <a href="#">HOME</a>
+            <a href="#">FEEDBACK</a>
+            <a href="#">CARDÁPIO</a>
+            <a href="#">RECEITAS</a>
+            <a href="#">CONTATOS</a>
+        </nav>
+
+        <div class="perfil">
+            <img src="{{ url_for('static', filename='imgs/PESSOA.png') }}">
+        </div>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <main class="container">
 
         <h1>CONTATOS</h1>
 
@@ -10,8 +38,8 @@
 
             <div class="card-info">
                 <h2>Ana Paula Souza</h2>
-                <p>E-mail: aaaaaaaa@escolar.ifrn.edu.br</p>
-                <p>Celular: (84) 99878-5634</p>
+                <p><strong>E-mail:</strong> aaaaaaaa@escolar.ifrn.edu.br</p>
+                <p><strong>Telefone:</strong> (84) 99878-5634</p>
             </div>
         </div>
 
@@ -20,11 +48,20 @@
 
             <div class="card-info">
                 <h2>Ana Paula Souza</h2>
-                <p>E-mail: aaaaaaaa@escolar.ifrn.edu.br</p>
-                <p>Celular: (84) 99878-5634</p>
+                <p><strong>E-mail:</strong> aaaaaaaa@escolar.ifrn.edu.br</p>
+                <p><strong>Telefone:</strong> (84) 99878-5634</p>
             </div>
         </div>
 
     </main>
 
-{%endblock%}
+    <!-- FOOTER -->
+    <footer>
+        <a href="#">Início</a>
+        <a href="#">Sobre nós</a>
+        <a href="#">Ajuda</a>
+        <p>© 2025 Nutrif</p>
+    </footer>
+
+</body>
+</html>

@@ -1,17 +1,59 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Feedback Alimentação</title>
 
-{% block conteudo %}
-<main>
-   <h1>FEEDBACK / ALIMENTAÇÃO</h1>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/feedbacck.css') }}">
+</head>
 
-   <form action="/feedback" method="POST">
-        <label for="mensagem">Nos conte o que achou da refeição:</label>
-        <br>
-        <input type="text" name="mensagem">
-        <br><br>
-        <button type="submit">Enviar</button>
-   </form>
+<body>
 
-   <img src="{{ url_for('static', filename='imgs/salada.png') }}">
-</main>
-{% endblock %}
+   <main class="container">
+
+      <section class="card">
+         <h1>Feedback / Alimentação</h1>
+
+         <form action="{{ url_for('feedback') }}" method="POST">
+
+            <!-- AVALIAÇÃO -->
+            <label>Avalie:</label>
+            <div class="estrelas">
+               ★ ★ ★ ☆ ☆
+            </div>
+
+            <!-- HORÁRIO -->
+            <label for="horario">Selecione o horário da refeição</label>
+            <select id="horario" name="horario">
+               <option value="">Selecione</option>
+               <option>Café da manhã</option>
+               <option>Almoço</option>
+               <option>Jantar</option>
+            </select>
+
+            <!-- DATA -->
+            <label for="data">Selecione a data da refeição</label>
+            <input type="date" id="data" name="data">
+
+            <!-- MENSAGEM -->
+            <label for="mensagem">Nos conte o que achou da refeição:</label>
+            <textarea id="mensagem" name="mensagem" required></textarea>
+
+            <button type="submit">Enviar</button>
+         </form>
+      </section>
+
+      <img class="decoracao" src="{{ url_for('static', filename='imgs/salada.png') }}" alt="Salada">
+
+   </main>
+
+   <footer>
+      <a href="{{ url_for('index') }}">Início</a>
+      <a href="#">Sobre nós</a>
+      <a href="#">Ajuda</a>
+      <p>© 2025 Nutrif</p>
+   </footer>
+
+</body>
+</html>
