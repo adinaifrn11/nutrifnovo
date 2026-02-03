@@ -35,18 +35,33 @@ body {
 .menu a {
     text-decoration: none;
     font-size: 14px;
-    color: black;
+    color: white;
     font-weight: bold;
 }
 
 .menu a:hover {
-    color: #1f5c3a;
+    color: #90ee90;
 }
 
 /* PERFIL */
 .perfil img {
     width: 35px;
     border-radius: 50%;
+}
+
+.perfil{
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+
+.perfil a{
+    text-decoration:none;
+    color:white;
+}
+
+.perfil a:hover{
+    color: #90ee90;
 }
 
 /* CONTAINER */
@@ -84,9 +99,11 @@ body {
     padding: 15px;
 }
 
-.receita-info h3 {
+.receita-info a {
     font-size: 16px;
     margin-bottom: 5px;
+    text-decoration: none;
+    color:black;
 }
 
 .receita-info p {

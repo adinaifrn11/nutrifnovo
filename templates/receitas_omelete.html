@@ -1,12 +1,13 @@
-<!DOCTYPE html>
+|<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{url_for('static', filename='css/cardapio.css')}}" rel="stylesheet">
-    <title>cardápio</title>
+    <title>omelete</title>
+    <link href="{{url_for('static', filename='css/receitas_omelete.css')}}" rel="stylesheet">
 </head>
 <body>
+
     <header class="topo">
         <div class="logo">
             <img src="{{ url_for('static', filename='imgs/logo.jpg') }}" alt="Logo Nutrif">
@@ -22,20 +23,35 @@
 
         <div class="perfil">
             <img src="{{ url_for('static', filename='imgs/PESSOA.png') }}" alt="Perfil">
+            <a href="{{ url_for('perfilusuario') }}">SEU PERFIL</a>
         </div>
     </header>
 
     <main>
-        <h1>Cardapio Semanal</h1>
-        <div class="opcao"><a href="{{ url_for('cardapioLanche') }}">clique aqui para visualizar o cardapio semanal dos lanches</a></div>
-        <div class="opcao"><a href="{{ url_for('cardapioRefeicoes') }}">Clique aqui para visualizar o cardapio semanal das refeições (almoço e janta)</a></div>
-        <section>
-            <div></div>
-            <div></div>
+        <h1>omelete</h1>
+        <section class="sessao-inicio">
+            <img src="{{ url_for('static', filename='imgs/omelete.png') }}" alt="omelete">
+            <div class="ingredientes">
+                <h2>Ingredientes</h2>
+                <p>Ovo</p>
+                <p>Sal</p>
+                <p>Legumes</p>
+                <p>manteiga</p>
+            </div>
         </section>
 
+        <section class="passo-a-passo">
+            <h2>Passo a passo</h2>
+            <div>
+                <p>1 - quebre os ovos</p>
+                <p>2 - adicione o sal</p>
+                <p>3 - adicione os legumes</p>
+                <p>4 - frite</p>
+            </div>
+        </section>
     </main>
 
+     <!-- FOOTER -->
     <footer class="rodape">
         <div class="footer-links">
             <a href="{{ url_for('index') }}">Início</a>
@@ -45,6 +61,6 @@
 
         <p>© 2025 Nutrif.</p>
     </footer>
+    
 </body>
 </html>
-

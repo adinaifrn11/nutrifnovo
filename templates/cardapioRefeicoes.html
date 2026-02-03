@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardapio Refeições</title>
+    <link href="{{url_for('static', filename='css/cardapioRefeicoes.css')}}" rel="stylesheet">            
+</head>
+<body>
+    <header class="topo">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='imgs/logo.jpg') }}" alt="Logo Nutrif">
+        </div>
+
+        <nav class="menu">
+            <a href="{{ url_for('index') }}">HOME</a>
+            <a href="{{ url_for('feedback_form') }}">FEEDBACK</a>
+            <a href="{{ url_for('cardapio') }}">CARDÁPIO</a>
+            <a href="{{ url_for('receitas') }}">RECEITAS</a>
+            <a href="{{ url_for('contato') }}">CONTATOS</a>
+        </nav>
+
+        <div class="perfil">
+            <img src="{{ url_for('static', filename='imgs/PESSOA.png') }}" alt="Perfil">
+        </div>
+    </header>
+
+    <main>
+        <h1>Cardápio do Almoço e Janta</h1>
+        <table>
+            <tr>
+                <th></th>
+                <th>segunda</th>
+                <th>terça</th>
+                <th>quarta</th>
+                <th>quinta</th>
+                <th>sexta</th>
+            </tr>
+
+            <tr>
+                <th>8:00</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <th>14:30</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <th>20:30</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </table>
+
+        <section class="botoes">
+
+            <div class="voltar">
+                <img src="{{ url_for('static', filename='imgs/seta.png') }}" alt="seta">
+                <a href="{{ url_for('cardapio') }}">voltar</a>
+            </div>
+
+            <div class="feedback"><a href="{{ url_for('feedback_form') }}">deixar feedback</a></div>
+
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="footer-links">
+            <a href="{{ url_for('index') }}">Início</a>
+            <a href="#">Sobre nós</a>
+            <a href="#">Ajuda</a>
+        </div>
+
+        <p>© 2025 Nutrif.</p>
+    </footer>
+</body>
+</html>

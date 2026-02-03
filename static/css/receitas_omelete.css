@@ -7,10 +7,21 @@
 
 /* BODY */
 body {
-    min-height: 100vh;
+    background: white;
+}
+
+.topo {
+    width: 100%;
+    background: #1f5c3a;
     display: flex;
-    flex-direction: column;
-    background: #ffffff;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+}
+
+.logo img {
+    width: 60px;
+    border-radius: 20px;
 }
 
 /* HEADER */
@@ -28,6 +39,12 @@ body {
     border-radius: 20px;
 }
 
+/* MENU */
+.menu {
+    display: flex;
+    gap: 25px;
+}
+
 .menu a {
     text-decoration: none;
     font-size: 14px;
@@ -39,50 +56,25 @@ body {
     color: #90ee90;
 }
 
-/* CONTAINER */
-.container {
-    flex: 1;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
+/* PERFIL */
+.perfil{
+    display:flex;
     align-items: center;
+    gap:10px;
 }
 
-/* TÍTULO */
-.container h1 {
-    margin-bottom: 40px;
-    letter-spacing: 1px;
+.perfil a{
+    text-decoration:none;
+    color:white;
 }
 
-/* CARD CONTATO */
-.card-contato {
-    width: 100%;
-    max-width: 700px;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    padding: 25px;
-    border: 1px solid #333;
-    border-radius: 20px;
-    margin-bottom: 30px;
+.perfil a:hover{
+    color: #90ee90;
 }
 
-/* IMAGEM */
-.card-contato img {
-    width: 140px;
-    height: 140px;
-    border-radius: 15px;
-    object-fit: cover;
-}
-
-/* INFO */
-.card-info h2 {
-    margin-bottom: 10px;
-}
-
-.card-info p {
-    margin-bottom: 5px;
-    font-size: 14px;
+.perfil img {
+    width: 35px;
+    border-radius: 50%;
 }
 
 /* FOOTER */
@@ -124,19 +116,43 @@ body {
     flex-direction: column;
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px) {
-    nav {
-        display: none;
-    }
+.receitas-container {
+    flex: 1;
+}
 
-    .card-contato {
-        flex-direction: column;
-        text-align: center;
-    }
+/* MAIN */
 
-    .card-contato img {
-        width: 120px;
-        height: 120px;
-    }
+main{
+   margin: 50px; 
+}
+
+main h1{
+    display:flex;
+    justify-content: center;
+    margin-bottom:25px;
+}
+
+.sessao-inicio{
+    display:flex;
+    flex-direction:row;
+    gap:100px;
+    justify-content:center;
+}
+
+.sessao-inicio img{
+    width:600px;
+    height:400px;
+    border-radius: 30px;
+
+}
+
+.ingredientes{
+    width: 400px;
+    height:400px;
+    background-color: #A9D8AF;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    border-radius:15px;
 }

@@ -116,6 +116,14 @@ def perfilusuario():
 def cardapio():
     return render_template('cardapio.html')
 
+@app.route('/cardapioRefeicoes')
+def cardapioRefeicoes():
+    return render_template('cardapioRefeicoes.html')
+
+@app.route('/cardapioLanche')
+def cardapioLanche():
+    return render_template('cardapioLanche.html')
+
 #feedback
 feedbacks_lista = []
 @app.route("/feedback", methods=['POST'])
@@ -137,9 +145,15 @@ def feedback_resultados():  # ✔ NOME ARRUMADO
 def receitas():
     return render_template('receitas.html') 
 
+@app.route('/receitas_omelete')
+def receitas_omelete():
+    return render_template('receitas_omelete.html')
+
 @app.route('/prato')
 def prato():
-    return render_template('prato.html') 
+    return render_template('prato.html')  
+
+
 
 #contatos
 @app.route('/contatos')

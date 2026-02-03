@@ -10,21 +10,21 @@
 
 <body>
 
-    <!-- HEADER -->
     <header class="topo">
         <div class="logo">
-    <img src="{{url_for('static', filename='imgs/logo.jpg')}}"/>  </div>
+            <img src="{{ url_for('static', filename='imgs/logo.jpg') }}" alt="Logo Nutrif">
+        </div>
 
-        <nav>
-            <a href="#">HOME</a>
-            <a href="#">FEEDBACK</a>
-            <a href="#">CARDÁPIO</a>
-            <a href="#">RECEITAS</a>
-            <a href="#">CONTATOS</a>
+        <nav class="menu">
+            <a href="{{ url_for('index') }}">HOME</a>
+            <a href="{{ url_for('feedback_form') }}">FEEDBACK</a>
+            <a href="{{ url_for('cardapio') }}">CARDÁPIO</a>
+            <a href="{{ url_for('receitas') }}">RECEITAS</a>
+            <a href="{{ url_for('contato') }}">CONTATOS</a>
         </nav>
 
         <div class="perfil">
-            <img src="{{ url_for('static', filename='imgs/PESSOA.png') }}">
+            <img src="{{ url_for('static', filename='imgs/PESSOA.png') }}" alt="Perfil">
         </div>
     </header>
 
@@ -55,12 +55,14 @@
 
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <a href="#">Início</a>
-        <a href="#">Sobre nós</a>
-        <a href="#">Ajuda</a>
-        <p>© 2025 Nutrif</p>
+    <footer class="rodape">
+        <div class="footer-links">
+            <a href="{{ url_for('index') }}">Início</a>
+            <a href="#">Sobre nós</a>
+            <a href="#">Ajuda</a>
+        </div>
+
+        <p>© 2025 Nutrif.</p>
     </footer>
 
 </body>

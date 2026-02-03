@@ -5,15 +5,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* BODY */
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background: #ffffff;
-}
-
-/* HEADER */
+/*header*/
 .topo {
     width: 100%;
     background: #1f5c3a;
@@ -39,50 +31,29 @@ body {
     color: #90ee90;
 }
 
-/* CONTAINER */
-.container {
-    flex: 1;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
+/*MAIN*/
+main{
+    display:flex;
     align-items: center;
+    justify-content: center;
+    flex-direction:column;
+    margin:50px;
+    gap:30px;
 }
 
-/* TÍTULO */
-.container h1 {
-    margin-bottom: 40px;
-    letter-spacing: 1px;
-}
-
-/* CARD CONTATO */
-.card-contato {
-    width: 100%;
-    max-width: 700px;
-    display: flex;
+.opcao{
+    display:flex;
+    width:1000px;
+    height: 100px;
+    border: solid 1px;
     align-items: center;
-    gap: 30px;
-    padding: 25px;
-    border: 1px solid #333;
-    border-radius: 20px;
-    margin-bottom: 30px;
+    justify-content: center;
+    border-radius:15px;
 }
 
-/* IMAGEM */
-.card-contato img {
-    width: 140px;
-    height: 140px;
-    border-radius: 15px;
-    object-fit: cover;
-}
-
-/* INFO */
-.card-info h2 {
-    margin-bottom: 10px;
-}
-
-.card-info p {
-    margin-bottom: 5px;
-    font-size: 14px;
+.opcao a{
+    color:black;
+    text-decoration: none;
 }
 
 /* FOOTER */
@@ -122,21 +93,4 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-}
-
-/* RESPONSIVO */
-@media (max-width: 768px) {
-    nav {
-        display: none;
-    }
-
-    .card-contato {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .card-contato img {
-        width: 120px;
-        height: 120px;
-    }
 }
