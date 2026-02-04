@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>página inicial</title>
+    <link href="{{url_for('static', filename='css/index2.css')}}" rel="stylesheet">
+</head>
+<body>
+    <!-- INDEX PÓS LOGIN -->
+
+     <!-- HEADER -->
+    <header class="topo">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='imgs/logo.jpg') }}" alt="Logo Nutrif">
+        </div>
+
+        <nav class="menu">
+            <a href="{{ url_for('index2') }}">HOME</a>
+            <a href="{{ url_for('feedback_form') }}">FEEDBACK</a>
+            <a href="{{ url_for('cardapio') }}">CARDÁPIO</a>
+            <a href="{{ url_for('receitas') }}">RECEITAS</a>
+            <a href="{{ url_for('contato') }}">CONTATOS</a>
+        </nav>
+
+        <div class="perfil">
+            <img src="{{ url_for('static', filename='imgs/PESSOA.png') }}" alt="Perfil">
+            <a href="{{ url_for('perfilusuario') }}">SEU PERFIL</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="sessao-descricao">
+            <div class="descricao-projeto">
+                <div><p>Nutrif é um projeto pensado para você estudante da rede federal, nosso projeto busca a melhoria da sua alimentação no campus, também ajudando os servidores na organização para instituição, tornando  nosso Campus um lugar melhor!</p></div>
+                <div class="botoes">
+                    <a href="{{ url_for('receitas') }}">Receitas</a>
+                    <a href="{{ url_for('cardapio') }}">Cardápio</a>
+                </div>
+            </div>
+
+            <img src="{{url_for('static', filename='imgs/criancas.png')}}">
+        </section>
+
+        <section>
+            <div class="imagens-projeto">
+                <img src="{{url_for('static', filename='imgs/criancas.png')}}">
+                <img src="{{url_for('static', filename='imgs/criancas.png')}}">
+                <img src="{{url_for('static', filename='imgs/criancas.png')}}">
+            </div>
+        </section>
+    </main>
+
+   <footer>
+    <div class="footer-texto">
+        <div class="footer-links">
+            <a href="#">Início</a>
+            <a href="#">Sobre nós</a>
+            <a href="#">Ajuda</a>
+        </div>
+
+        <p>© 2025 Nutrif.</p>
+    </div>
+
+    <img src="{{ url_for('static', filename='imgs/logo.jpg') }}">
+</footer>
+
+
+</body>
+</html>

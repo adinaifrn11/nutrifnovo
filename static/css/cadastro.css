@@ -23,6 +23,7 @@ header img{
     background-color: #A9D8AF;
     border-radius:15px;
     padding:200px;
+    margin:50px;
 }
 
 
@@ -55,12 +56,14 @@ header img{
     padding:20px;
     border-radius:15px;
     margin-top:40px;
+    color:white;
 }
 main{
     display:flex;
     align-items: center;
     justify-content: center;
 }
+
 footer {
     background: #2f6b45;
     padding: 15px 40px;

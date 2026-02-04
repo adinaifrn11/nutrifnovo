@@ -23,6 +23,7 @@ header img{
     background-color: #A9D8AF;
     border-radius:15px;
     padding:200px;
+    margin-bottom:30px;
 }
 
 
@@ -60,14 +61,16 @@ main{
     display:flex;
     align-items: center;
     justify-content: center;
+    margin: 50px;
+    flex-direction:column;
+}
 
- 
+main form button a{
+    color:white;
+    text-decoration:none;
 }
-.salada {
-    position: fixed;
-    bottom: 100px;
-    right: 10px;
-}
+
+
 
 footer {
     background: #2f6b45;

@@ -163,20 +163,55 @@ main h1{
     align-items:left;
     justify-content:center;
     flex-direction:column;
+    margin-bottom:50px;
 
+}
+
+.passo-a-passo h2{
+    margin-bottom:20px;
 }
 
 .descricao{
     width:600px;
     height: 300px;
     display:flex;
-    align-items:center;
     justify-content:center;
     flex-direction:column;
 
 }
 
-.descricao h2{
-    display:flex;
-    align-items:left;
+.area-feedback{
+    border: solid 1px;
+    width: 1000px;
+    height: 200px;
+    border-radius:15px;
 }
+   
+.titulo-feedback{
+    display:flex;
+    flex-direction:row;
+    gap:30px;
+    margin: 30px;
+    align-items: center;
+}
+    
+.titulo-feedback button{
+    background-color:green;
+    border-radius:15px;
+    width: 150px;
+    height: 40px;
+
+}
+
+.titulo-feedback button a{
+    text-decoration: none;
+    color:white;
+}
+
+.feedback{
+    display:flex;
+    flex-direction:row;
+    gap:15px;
+    margin: 30px;
+}
+    

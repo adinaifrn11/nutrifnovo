@@ -54,6 +54,24 @@
                 <p>4 - frite</p>
             </div>
         </section>
+
+        <section class="area-feedback">
+            <div class="titulo-feedback">
+                <h2>Feedbacks</h2>
+                <button>
+                    <a href="{{ url_for('feedback_form') }}">DEIXAR FEEDBACK</a>
+                </button>
+            </div>
+
+            <div class="feedback">
+                <img src="{{ url_for('static', filename='imgs/PESSOA.png') }}" alt="Perfil">
+                <div>
+                    <p>estrelas</p>
+                    <p>comentario feedback</p>
+                </div>
+            </div>
+            
+        </section>
     </main>
 
      <!-- FOOTER -->

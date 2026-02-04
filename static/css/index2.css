@@ -1,62 +1,67 @@
-/* ===== RESET ===== */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+/* BODY */
 body {
     background: white;
 }
 
-/* ===== HEADER ===== */
-header {
-    background: #2f6b45;
+/* HEADER */
+.topo {
+    width: 100%;
+    background: #1f5c3a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 15px 40px;
 }
 
-.nav-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-header img {
+.logo img {
     width: 60px;
-    border-radius: 20%;
+    border-radius: 20px;
 }
 
-/* Botões Login / Cadastre-se */
-.botoes-header {
+/* MENU */
+.menu {
     display: flex;
-    gap: 15px;
+    gap: 25px;
 }
 
-.botoes-header a {
+.menu a {
     text-decoration: none;
     font-size: 14px;
-    font-weight: bold;
-    padding: 8px 20px;
-    border-radius: 8px;
-    border: 2px solid white;
-    transition: 0.3s;
-}
-
-/* Login branco */
-.botoes-header a:first-child {
-    background: white;
-    color: #2f6b45;
-}
-
-/* Cadastre-se verde */
-.botoes-header a:last-child {
-    background: #2f6b45;
     color: white;
+    font-weight: bold;
 }
 
-.botoes-header a:hover {
-    opacity: 0.8;
+.menu a:hover {
+    color: #90ee90;
+}
+
+/* PERFIL */
+.perfil img {
+    width: 35px;
+    border-radius: 50%;
+}
+
+.perfil{
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+
+.perfil a{
+    text-decoration:none;
+    color:white;
+}
+
+.perfil a:hover{
+    color: #90ee90;
 }
 
 /* ===== MAIN ===== */
@@ -78,7 +83,7 @@ main {
     padding: 40px;
     border-radius: 30px;
     width: 1000px;
-    height:250px;
+    height:250px
 }
 
 .descricao-projeto p {

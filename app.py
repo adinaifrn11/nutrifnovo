@@ -48,6 +48,11 @@ migrate = Migrate(app, db)
 def index():
     return render_template('index.html')
 
+#pagina inicial pós login
+@app.route('/index2')
+def index2():
+    return render_template('index2.html')    
+
 #login
 
 @app.route("/login", methods=["GET", "POST"])
