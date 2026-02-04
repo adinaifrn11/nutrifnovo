@@ -2,12 +2,15 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <link href="{{url_for('static', filename='css/acesso_negado.css')}}" rel="stylesheet">
     <title>Acesso negado</title>
 </head>
 <body>
-    <h1>🚫 Acesso negado</h1>
-    <p>Você precisa estar logado para acessar esta página.</p>
-
-    <a href="{{ url_for('login') }}">Ir para login</a>
+    <div class="acesso">
+        <h1>🚫 Acesso negado</h1>
+        <p>Você precisa estar logado para acessar esta página.</p>
+        <a href="{{ url_for('login') }}">Ir para login</a>
+    </div>
+    
 </body>
 </html>

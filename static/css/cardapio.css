@@ -5,7 +5,12 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/*header*/
+/* BODY */
+body {
+    background: white;
+}
+
+/* HEADER */
 .topo {
     width: 100%;
     background: #1f5c3a;
@@ -20,6 +25,12 @@
     border-radius: 20px;
 }
 
+/* MENU */
+.menu {
+    display: flex;
+    gap: 25px;
+}
+
 .menu a {
     text-decoration: none;
     font-size: 14px;
@@ -30,6 +41,28 @@
 .menu a:hover {
     color: #90ee90;
 }
+
+/* PERFIL */
+.perfil img {
+    width: 35px;
+    border-radius: 50%;
+}
+
+.perfil{
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+
+.perfil a{
+    text-decoration:none;
+    color:white;
+}
+
+.perfil a:hover{
+    color: #90ee90;
+}
+
 
 /*MAIN*/
 main{
@@ -93,4 +126,8 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+}
+
+.receitas-container {
+    flex: 1;
 }

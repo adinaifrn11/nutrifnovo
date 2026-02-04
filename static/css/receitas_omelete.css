@@ -140,19 +140,28 @@ main h1{
 }
 
 .sessao-inicio img{
-    width:600px;
-    height:400px;
+    width:500px;
+    height:300px;
     border-radius: 30px;
 
 }
 
 .ingredientes{
-    width: 400px;
-    height:400px;
+    width: 300px;
+    height:300px;
     background-color: #A9D8AF;
     display:flex;
-    align-items:center;
+    align-items:left;
+    padding-left: 50px;
     justify-content:center;
     flex-direction:column;
     border-radius:15px;
+}
+
+.passo-a-passo{
+    display:flex;
+    align-items:left;
+    justify-content:center;
+    flex-direction:column;
+
 }
