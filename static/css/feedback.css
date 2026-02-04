@@ -1,23 +1,77 @@
+/* RESET */
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+/* BODY */
 body {
-   min-height: 100vh;
-   display: flex;
-   flex-direction: column;
-   background: #ffffff;
+    background: white;
 }
+
+/* HEADER */
+.topo {
+    width: 100%;
+    background: #1f5c3a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+}
+
+.logo img {
+    width: 60px;
+    border-radius: 20px;
+}
+
+/* MENU */
+.menu {
+    display: flex;
+    gap: 25px;
+}
+
+.menu a {
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    color: #90ee90;
+}
+
+/* PERFIL */
+.perfil img {
+    width: 35px;
+    border-radius: 50%;
+}
+
+.perfil{
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+
+.perfil a{
+    text-decoration:none;
+    color:white;
+}
+
+.perfil a:hover{
+    color: #90ee90;
+}
+
 
 /* CONTAINER */
 .container {
    flex: 1;
    display: flex;
-   justify-content: allows;
+   justify-content: center;
    align-items: center;
+   flex-direction: column;
    padding: 40px 20px;
    gap: 40px;
 }

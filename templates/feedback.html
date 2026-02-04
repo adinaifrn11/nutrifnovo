@@ -8,6 +8,24 @@
 </head>
 
 <body>
+   <header class="topo">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='imgs/logo.jpg') }}" alt="Logo Nutrif">
+        </div>
+
+        <nav class="menu">
+            <a href="{{ url_for('index') }}">HOME</a>
+            <a href="{{ url_for('feedback_form') }}">FEEDBACK</a>
+            <a href="{{ url_for('cardapio') }}">CARDÁPIO</a>
+            <a href="{{ url_for('receitas') }}">RECEITAS</a>
+            <a href="{{ url_for('contato') }}">CONTATOS</a>
+        </nav>
+
+        <div class="perfil">
+            <img src="{{ url_for('static', filename='imgs/PESSOA.png') }}" alt="Perfil">
+            <a href="{{ url_for('perfilusuario') }}">SEU PERFIL</a>
+        </div>
+    </header>
 
    <main class="container">
 
@@ -17,7 +35,7 @@
          <form action="{{ url_for('feedback') }}" method="POST">
 
             <!-- AVALIAÇÃO -->
-             <label>Avalie:</label>
+            <label>Avalie:</label>
             <div class="star-rating">
                <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
                <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
