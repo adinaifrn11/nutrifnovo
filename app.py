@@ -206,6 +206,7 @@ def select():
     if print(u) == Usuario.query.get(1):
      return u.nome
 
+#update
 @app.route("/editar_perfil", methods=["GET", "POST"])
 @login_required
 def editar_perfil():
