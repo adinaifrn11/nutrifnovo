@@ -113,6 +113,7 @@ def perfilusuario():
 @login_required
 def perfilservidor():
     return render_template('perfilservidor.html')
+    
 @app.route('/cardapioRefeicoes')
 def cardapioRefeicoes():
     return render_template('cardapioRefeicoes.html')
