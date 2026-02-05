@@ -27,26 +27,33 @@
         </div>
     </header>
     <main class="container">
-         <h2>Feedbacks Recebidos</h2>
-          {% if mensagem %}
-        <ul style="list-style: none;">
-            {% for p in mensagem %}
-                <li>{{ p }}</li>
-            {% endfor %}
-        </ul>
-    {%else%}
-        <h3 style="color:gray;">Nenhuma mensagem recebida</h3>
-    {% endif %}
-
-    <br><br>
-    <a href="/feedback">Enviar outro feedback</a>
+        <div class="resultados">
+                <h2>Feedbacks Recebidos</h2>
+                {% if mensagem %}
+                <ul style="list-style: none;">
+                    {% for p in mensagem %}
+                    <div class="comentario">
+                        <img src="{{ url_for('static', filename='imgs/PESSOA.png') }}" alt="Perfil">
+                        <li>{{ p }}</li>
+                    </div>
+                    {% endfor %}
+                </ul>
+            {%else%}
+                <h3 style="color:gray;">Nenhuma mensagem recebida</h3>
+            {% endif %}
+            
+        </div>        
 </main>
-     <footer>
-      <a href="{{ url_for('index') }}">Início</a>
-      <a href="#">Sobre nós</a>
-      <a href="#">Ajuda</a>
-      <p>© 2025 Nutrif</p>
-   </footer>
+     
+<footer class="rodape">
+        <div class="footer-links">
+            <a href="{{ url_for('index') }}">Início</a>
+            <a href="#">Sobre nós</a>
+            <a href="#">Ajuda</a>
+        </div>
+
+        <p>© 2025 Nutrif.</p>
+</footer>
 
 </body>
 </html>
