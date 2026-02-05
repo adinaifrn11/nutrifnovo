@@ -1,0 +1,19 @@
+-- SCRIPT DE CRIAÇÃO DO BANCO
+CREATE DATABASE IF NOT EXISTS pi2025_nufrif;
+USE pi2025_nufrif;
+
+-- Tabela Usuario
+CREATE TABLE IF NOT EXISTS usuario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha VARCHAR(6) NOT NULL,
+    tipo VARCHAR(20)
+);
+
+-- Tabela Cardápio
+CREATE TABLE IF NOT EXISTS cardapio (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    dia_semana VARCHAR(20) NOT NULL,
+    refeicao VARCHAR(255) NOT NULL
+);

@@ -1,0 +1,3 @@
+-- RESET DO BANCO
+TRUNCATE TABLE usuario;
+TRUNCATE TABLE cardapio;
