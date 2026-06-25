@@ -56,6 +56,12 @@ def index2():
     return render_template('index2.html')
 
 # Login
+
+@app.route("/login/suap")
+def login_suap():
+    redirect_uri = url_for("callback_suap", _external=True)
+    return oauth.suap.authorize_redirect(redirect_uri)
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
