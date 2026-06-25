@@ -16,7 +16,7 @@ import os
 app = Flask(__name__)
 
 # SECRET_KEY garante que a sessão funcione
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SECRET_KEY'] = 'chave-secreta-nutrif-2025'
 
 # Configuração do banco
 db_usuario = os.getenv('DB_USERNAME')
@@ -88,9 +88,21 @@ def cadastro():
     if request.method == "POST":
         nome = request.form["nome"]
         email = request.form["email"]
-        senha = request.form["senha"] 
+        senha = request.form["senha"]
 
-        novo_usuario = Usuario(nome=nome, email=email, senha=senha, tipo="aluno")
+        # 🔎 VERIFICA SE EMAIL JÁ EXISTE
+        usuario_existente = Usuario.query.filter_by(email=email).first()
+
+        if usuario_existente:
+            flash("Esse email já está cadastrado!")
+            return redirect(url_for("cadastro"))
+
+        novo_usuario = Usuario(
+            nome=nome,
+            email=email,
+            senha=senha,
+            tipo="aluno"
+        )
 
         db.session.add(novo_usuario)
         db.session.commit()
@@ -99,7 +111,6 @@ def cadastro():
         return redirect(url_for("login"))
 
     return render_template("cadastro.html")
-
 # ============================
 # Páginas protegidas
 # ============================
@@ -177,10 +188,14 @@ def contato():
     return render_template('contatos.html')   
 
 # Restrições
-@app.route('/restricao')
+@app.route('/restricao', methods=['GET', 'POST'])
 def restricao():   
-    return render_template('restricao.html')  
+    if request.method == 'POST':
+        dado = request.form.get('dado')
+        flash("Restrição enviada com sucesso!")
+        return redirect(url_for('restricao'))
 
+    return render_template('restricao.html')
 
 # Excluir conta
 @app.route("/excluir_conta", methods=["POST"])
