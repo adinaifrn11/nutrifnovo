@@ -1,7 +1,7 @@
 # ============================
 # app.py - versão original do usuário
 # ============================
-
+from flask import session
 from flask import Flask, render_template, request, flash, redirect, url_for, abort
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from flask_migrate import Migrate
@@ -18,8 +18,12 @@ from authlib.integrations.flask_client import OAuth
 app = Flask(__name__)
 app.config.from_object(Config)
 
-# SECRET_KEY garante que a sessão funcione
-app.config['SECRET_KEY'] = 'chave-secreta-nutrif-2025'
+app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
+app.config["SESSION_COOKIE_SECURE"] = False
+
+print("SECRET_KEY:", repr(app.config["SECRET_KEY"]))
+print("CLIENT_ID:", repr(app.config["SUAP_CLIENT_ID"]))
+
 
 # Configuração do banco
 db_usuario = os.getenv('DB_USERNAME')
@@ -61,9 +65,11 @@ oauth.register(
     client_secret=app.config["SUAP_CLIENT_SECRET"],
     authorize_url="https://suap.ifrn.edu.br/o/authorize/",
     access_token_url="https://suap.ifrn.edu.br/o/token/",
+    api_base_url="https://suap.ifrn.edu.br/api/",
     client_kwargs={
         "scope": "identificacao"
-    }
+    },
+    client_auth_method="client_secret_post"
 )
 
 @app.route('/index2')
@@ -73,62 +79,29 @@ def index2():
 
 # Login
 from flask import request
+from flask import session
 
 @app.route("/login/suap")
 def login_suap():
-    print("Host:", request.host)
-    print("URL:", request.url)
-    print("Root:", request.url_root)
 
-    redirect_uri = request.url_root.rstrip("/") + "/oauth/callback"
+    session["teste"] = "ok"
 
-    print("REDIRECT:", redirect_uri)
+    print("SESSION LOGIN:", dict(session))
 
-    return oauth.suap.authorize_redirect(redirect_uri)  return oauth.suap.authorize_redirect(redirect_uri)
+    redirect_uri = "http://localhost:5000/oauth/callback"
 
+    return oauth.suap.authorize_redirect(redirect_uri)
 @app.route("/oauth/callback")
 def callback_suap():
+
+    print("SESSION:", dict(session))
+    print("COOKIES:", request.cookies)
+    print("ARGS:", request.args)
 
     token = oauth.suap.authorize_access_token()
 
     access_token = token["access_token"]
 
-    resposta = requests.get(
-        "https://suap.ifrn.edu.br/api/rh/eu/",
-        headers={
-            "Authorization": f"Bearer {access_token}"
-        }
-    )
-
-    resposta.raise_for_status()
-
-    dados = resposta.json()
-
-    usuario = Usuario.query.filter_by(
-        email=dados["email"]
-    ).first()
-
-    if not usuario:
-
-        usuario = Usuario(
-            nome=dados["nome_usual"],
-            email=dados["email"],
-            senha="SUAP",
-            tipo="aluno"
-        )
-
-        db.session.add(usuario)
-
-    else:
-
-        usuario.nome = dados["nome_usual"]
-        usuario.email = dados["email"]
-
-    db.session.commit()
-
-    login_user(usuario)
-
-    return redirect(url_for("index2"))
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -335,5 +308,5 @@ def voltar():
 # ============================
 # Rodando o app
 # ============================
-if __name__ == "__main__":    
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True, use_reloader=False)
