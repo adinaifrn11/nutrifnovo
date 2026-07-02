@@ -88,10 +88,12 @@ def login_suap():
 
     print("SESSION LOGIN:", dict(session))
 
-    redirect_uri = "http://localhost:5000/oauth/callback"
+    redirect_uri = url_for("callback_suap", _external=True)
 
     return oauth.suap.authorize_redirect(redirect_uri)
-@app.route("/oauth/callback")
+
+
+@app.route("/authorize/suap")
 def callback_suap():
 
     print("SESSION:", dict(session))
@@ -100,7 +102,60 @@ def callback_suap():
 
     token = oauth.suap.authorize_access_token()
 
-    access_token = token["access_token"]
+    # Busca os dados do usuário no SUAP.
+    # A API foi atualizada e o endpoint mudou de lugar, então tentamos
+    # os possíveis endpoints em ordem até algum retornar JSON válido.
+    endpoints = [
+        "eu/",
+        "rh/eu/",
+        "ensino/meus-dados-aluno/",
+        "rh/meus-dados/",
+    ]
+
+    dados = None
+    for ep in endpoints:
+        resp = oauth.suap.get(ep, token=token)
+        ctype = resp.headers.get("Content-Type", "")
+        if resp.status_code == 200 and "application/json" in ctype:
+            dados = resp.json()
+            print("SUAP OK via endpoint:", ep, "->", dados)
+            break
+        else:
+            print("Tentativa falhou:", ep, resp.status_code, ctype)
+
+    if dados is None:
+        print("Nenhum endpoint do SUAP retornou dados válidos.")
+        abort(502)
+
+    matricula = dados.get("matricula") or dados.get("identificacao")
+    nome = (
+        dados.get("nome_usual")
+        or dados.get("nome_registro")
+        or dados.get("nome")
+        or matricula
+    )
+    email = (
+        dados.get("email")
+        or dados.get("email_google_classroom")
+        or dados.get("email_academico")
+        or dados.get("email_secundario")
+        or f"{matricula}@suap.ifrn.edu.br"
+    )
+
+    # Procura o usuário pelo email; se não existir, cria um novo
+    usuario = Usuario.query.filter_by(email=email).first()
+    if usuario is None:
+        usuario = Usuario(
+            nome=nome,
+            email=email,
+            senha="",  # login via SUAP não usa senha local
+            tipo="aluno",
+        )
+        db.session.add(usuario)
+        db.session.commit()
+
+    login_user(usuario)
+    return redirect(url_for("index2"))
 
 
 @app.route("/login", methods=["GET", "POST"])
