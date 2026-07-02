@@ -9,11 +9,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from models import Usuario, Cardapio  # Ajuste conforme seus modelos
 from utils import db, lm
 import os
-
+import requests
+from config import Config
+from authlib.integrations.flask_client import OAuth
 # ============================
 # Criando a aplicação
 # ============================
 app = Flask(__name__)
+app.config.from_object(Config)
 
 # SECRET_KEY garante que a sessão funcione
 app.config['SECRET_KEY'] = 'chave-secreta-nutrif-2025'
@@ -50,17 +53,82 @@ def load_user(user_id):
 def index():
     return render_template('index.html')
 
+oauth = OAuth(app)
+
+oauth.register(
+    name="suap",
+    client_id=app.config["SUAP_CLIENT_ID"],
+    client_secret=app.config["SUAP_CLIENT_SECRET"],
+    authorize_url="https://suap.ifrn.edu.br/o/authorize/",
+    access_token_url="https://suap.ifrn.edu.br/o/token/",
+    client_kwargs={
+        "scope": "identificacao"
+    }
+)
+
 @app.route('/index2')
 @login_required
 def index2():
     return render_template('index2.html')
 
 # Login
+from flask import request
 
 @app.route("/login/suap")
 def login_suap():
-    redirect_uri = url_for("callback_suap", _external=True)
-    return oauth.suap.authorize_redirect(redirect_uri)
+    print("Host:", request.host)
+    print("URL:", request.url)
+    print("Root:", request.url_root)
+
+    redirect_uri = request.url_root.rstrip("/") + "/oauth/callback"
+
+    print("REDIRECT:", redirect_uri)
+
+    return oauth.suap.authorize_redirect(redirect_uri)  return oauth.suap.authorize_redirect(redirect_uri)
+
+@app.route("/oauth/callback")
+def callback_suap():
+
+    token = oauth.suap.authorize_access_token()
+
+    access_token = token["access_token"]
+
+    resposta = requests.get(
+        "https://suap.ifrn.edu.br/api/rh/eu/",
+        headers={
+            "Authorization": f"Bearer {access_token}"
+        }
+    )
+
+    resposta.raise_for_status()
+
+    dados = resposta.json()
+
+    usuario = Usuario.query.filter_by(
+        email=dados["email"]
+    ).first()
+
+    if not usuario:
+
+        usuario = Usuario(
+            nome=dados["nome_usual"],
+            email=dados["email"],
+            senha="SUAP",
+            tipo="aluno"
+        )
+
+        db.session.add(usuario)
+
+    else:
+
+        usuario.nome = dados["nome_usual"]
+        usuario.email = dados["email"]
+
+    db.session.commit()
+
+    login_user(usuario)
+
+    return redirect(url_for("index2"))
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
