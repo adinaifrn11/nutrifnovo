@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Editar Cardápio</title>
+</head>
+
+<body>
+
+    <header>
+        <nav class="nav-header">
+            <img src="{{ url_for('static', filename='imgs/logo.jpg') }}" alt="Logo">
+
+            <a href="{{ url_for('index') }}">HOME</a>
+
+            <a href="{{ url_for('feedback_form') }}">FEEDBACK</a>
+
+            <a href="{{ url_for('cardapio') }}">CARDÁPIO</a>
+
+            <a href="{{ url_for('receitas') }}">RECEITAS</a>
+
+            <a href="{{ url_for('contato') }}">CONTATOS</a>
+
+            <img src="{{ url_for('static', filename='imgs/PESSOA.png') }}" alt="Perfil">
+        </nav>
+
+        <hr>
+
+        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('index') }}">Sair</a>
+            </li>
+        </ul>
+    </header>
+
+    <main>
+
+        <h2>Editar Cardápio</h2>
+
+        <form method="POST">
+
+            {{ form.hidden_tag() }}
+
+            <label>
+                {{ form.dia_semana.label }}
+            </label>
+
+            {{ form.dia_semana(class="form-control") }}
+
+            <br><br>
+
+            <label>
+                {{ form.refeicao.label }}
+            </label>
+
+            {{ form.refeicao(class="form-control") }}
+
+            <br><br>
+
+            {{ form.submit(class="btn btn-primary") }}
+
+        </form>
+
+    </main>
+
+    <footer>
+
+        <div>
+
+            <div>
+                <p>Início</p>
+                <p>Sobre nós</p>
+                <p>Ajuda</p>
+            </div>
+
+            <hr>
+
+            <p>© 2025 Nutrif.</p>
+
+        </div>
+
+        <img src="{{ url_for('static', filename='imgs/logo.jpg') }}" alt="Logo">
+
+    </footer>
+
+</body>
+</html>
+

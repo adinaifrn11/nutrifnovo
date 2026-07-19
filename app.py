@@ -12,6 +12,8 @@ import os
 import requests
 from config import Config
 from authlib.integrations.flask_client import OAuth
+
+from forms import LoginForm, CadastroForm, CardapioForm
 # ============================
 # Criando a aplicação
 # ============================
@@ -160,21 +162,23 @@ def callback_suap():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == "POST":
-        email = request.form["email"]
-        senha = request.form["senha"] # Aqui a variável se chama 'senha'
-        
+
+    form = LoginForm()
+
+    if form.validate_on_submit():
+
+        email = form.email.data
+        senha = form.senha.data
+
         usuario = Usuario.query.filter_by(email=email).first()
-        
-        # 1. Verifica se o usuário existe
-        # 2. Compara a senha do banco com a senha que veio do formulário
+
         if usuario and usuario.senha == senha:
             login_user(usuario)
             return redirect(url_for("index2"))
         else:
             flash("Email ou senha incorretos!")
 
-    return render_template("login.html")
+    return render_template("login.html", form=form)
 
 # Logout
 @app.route('/logoff')
@@ -187,12 +191,16 @@ def logoff():
 #
 @app.route("/cadastro", methods=["GET", "POST"])
 def cadastro():
-    if request.method == "POST":
-        nome = request.form["nome"]
-        email = request.form["email"]
-        senha = request.form["senha"]
 
-        # 🔎 VERIFICA SE EMAIL JÁ EXISTE
+    form = CadastroForm()
+
+    if form.validate_on_submit():
+
+        nome = form.nome.data
+        email = form.email.data
+        senha = form.senha.data
+
+        # Verifica se o email já existe
         usuario_existente = Usuario.query.filter_by(email=email).first()
 
         if usuario_existente:
@@ -212,7 +220,7 @@ def cadastro():
         flash("Cadastro realizado com sucesso! Faça login.")
         return redirect(url_for("login"))
 
-    return render_template("cadastro.html")
+    return render_template("cadastro.html", form=form)
 # ============================
 # Páginas protegidas
 # ============================
@@ -242,18 +250,34 @@ def cardapio():
 @app.route("/cardapio/editar/<int:id>", methods=["GET", "POST"])
 @login_required
 def editar_cardapio(id):
-    if current_user.tipo != "nutricionista":
-        abort(403)
+
+    #if current_user.tipo != "nutricionista":
+        #abort(403)
 
     cardapio = Cardapio.query.get_or_404(id)
 
-    if request.method == "POST":
-        cardapio.dia_semana = request.form["dia_semana"]
-        cardapio.refeicao = request.form["refeicao"]
+    form = CardapioForm()
+
+    if form.validate_on_submit():
+
+        cardapio.dia_semana = form.dia_semana.data
+        cardapio.refeicao = form.refeicao.data
+
         db.session.commit()
+
+        flash("Cardápio atualizado com sucesso!")
+
         return redirect(url_for("cardapio"))
 
-    return render_template("editar_cardapio.html", cardapio=cardapio)
+    if request.method == "GET":
+        form.dia_semana.data = cardapio.dia_semana
+        form.refeicao.data = cardapio.refeicao
+
+    return render_template(
+        "editar_cardapio.html",
+        cardapio=cardapio,
+        form=form
+    )
 
 # Feedback
 feedbacks_lista = []
